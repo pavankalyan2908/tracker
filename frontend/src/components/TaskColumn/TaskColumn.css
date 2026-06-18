@@ -2,13 +2,15 @@
 .task-column {
     display: flex;
     flex-direction: column;
-    width: 18.5rem; /* Fixed standardized width for Jira-like boards */
+    width: 18.5rem;
     min-width: 18.5rem;
-    background-color: #f8fafc; /* Sleek, muted gray column background */
+    background-color: #f8fafc;
     border-radius: 0.75rem;
     border: 1px solid #e2e8f0;
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
+    
+    /* CHANGE: Force the column to span the full height of the board track */
+    height: 100%; 
+    max-height: calc(100vh - 140px); 
   }
   
   /* Header region displaying column name & item count */
@@ -49,7 +51,11 @@
     flex-direction: column;
     gap: 0.75rem;
     padding: 1rem;
-    flex-grow: 1;
+    
+    /* CHANGE: This forces the container to expand all the way to the bottom */
+    flex-grow: 1; 
+    min-height: 200px; /* Ensures even empty columns have a clear physical drop zone */
+    
     overflow-y: auto;
     transition: background-color 0.2s;
   }
@@ -61,4 +67,10 @@
   .task-list-container::-webkit-scrollbar-thumb {
     background-color: #cbd5e1;
     border-radius: 4px;
+  }
+
+  /* Active drag intercept state */
+.column-dragged-over {
+    background-color: #edf2f7; /* Darkens slightly to show it's an active target */
+    border: 1px dashed #4f46e5; /* Distinct indigo dash border outline */
   }
