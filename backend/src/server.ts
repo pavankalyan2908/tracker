@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import taskRoutes from './routes/taskRoutes'; // <-- Import our new routes!
 
-// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
@@ -29,6 +29,9 @@ mongoose
     console.error('❌ MongoDB database connection error:', error);
   });
 
+// Link our task routes to the app under the "/api/tasks" path
+app.use('/api/tasks', taskRoutes);
+
 // Simple Health Check Route
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({ 
@@ -38,7 +41,6 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server is humming happily on http://localhost:${PORT}`);
 });
