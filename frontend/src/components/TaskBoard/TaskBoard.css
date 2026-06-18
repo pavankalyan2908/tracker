@@ -1,0 +1,51 @@
+/* TaskBoard.css */
+.task-board-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+  
+  /* Header displaying board title and metadata metadata counters */
+  .board-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .board-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .board-subtitle {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+  }
+  
+  /* Horizontal scrolling track for Kanban columns */
+  .columns-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    flex-grow: 1;
+    align-items: flex-start;
+  }
+  
+  /* Smooth scrollbar styling for the overall board horizon track */
+  .columns-track::-webkit-scrollbar {
+    height: 8px;
+  }
+  .columns-track::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 9999px;
+  }
+  .columns-track::-webkit-scrollbar-track {
+    background-color: #f1f5f9;
+    border-radius: 9999px;
+  }
