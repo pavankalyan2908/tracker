@@ -1,28 +1,30 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-// This defines what data our TypeScript code expects
-export interface ITask extends Document {
-  title: string;
-  description: string;
-  status: 'BACKLOG' | 'TODO' | 'IN_PROGRESS' | 'IN_REVIEW' | 'DONE';
-  priority: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-  component: 'FRONTEND' | 'BACKEND' | 'DATABASE' | 'DEVOPS';
-  assignee: string;
-  estimatedHours: number;
-}
-
-// This tells MongoDB exactly how to validate data before saving it
-const taskSchema = new Schema<ITask>(
-  {
-    title: { type: String, required: true, trim: true },
-    description: { type: String, trim: true },
-    status: { type: String, enum: ['BACKLOG', 'TODO', 'IN_PROGRESS', 'IN_REVIEW', 'DONE'], default: 'TODO' },
-    priority: { type: String, enum: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'], default: 'MEDIUM' },
-    component: { type: String, enum: ['FRONTEND', 'BACKEND', 'DATABASE', 'DEVOPS'], required: true },
-    assignee: { type: String, default: 'Unassigned' },
-    estimatedHours: { type: Number, default: 1 }
+const taskSchema = new Schema({
+  title: { type: String, required: true, trim: true },
+  description: { type: String, trim: true },
+  status: { 
+    type: String, 
+    required: true, 
+    enum: ['BACKLOG', 'TODO', 'IN_PROGRESS', 'IN_REVIEW', 'DONE'],
+    default: 'TODO'
   },
-  { timestamps: true } // Automatically manages createdAt and updatedAt fields
-);
+  priority: { 
+    type: String, 
+    required: true, 
+    enum: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'],
+    default: 'MEDIUM'
+  },
+  component: { 
+    type: String, 
+    required: true, 
+    enum: ['FRONTEND', 'BACKEND', 'DATABASE', 'DEVOPS'],
+    default: 'FRONTEND'
+  },
+  assignee: { type: String, required: true, trim: true },
+  dueDate: { type: Date, required: true } // <-- CHANGED: Replaced estimatedHours with Date
+}, {
+  timestamps: true
+});
 
-export const Task = model<ITask>('Task', taskSchema);
+export const Task = model('Task', taskSchema);
