@@ -1,51 +1,27 @@
-import type { Task } from './types';
+import type { Task } from './types/index';
 
 export const mockTasks: Task[] = [
   {
     _id: '1',
-    title: 'Set up JWT authentication middleware',
-    description: 'Implement secure route guard protection and token refreshing logic.',
-    status: 'IN_PROGRESS',
-    priority: 'CRITICAL',
-    component: 'BACKEND',
-    assignee: 'Pravallika',
-    estimatedHours: 4,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  },
-  {
-    _id: '4',
-    title: 'Set up JWT authentication middleware',
-    description: 'Implement secure route guard protection and token refreshing logic.',
+    title: 'Design Database Schema',
+    description: 'Create initial MongoDB schema layout with Mongoose models.',
     status: 'TODO',
-    priority: 'CRITICAL',
-    component: 'BACKEND',
+    priority: 'HIGH',
+    component: 'DATABASE',
     assignee: 'Pravallika',
-    estimatedHours: 4,
+    dueDate: '2026-07-01', 
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   },
   {
     _id: '2',
-    title: 'Design Kanban Columns layout grid',
-    description: 'Build responsive grid structure using CSS Flexbox/Grid for task states.',
-    status: 'TODO',
-    priority: 'HIGH',
-    component: 'FRONTEND',
-    assignee: 'Vamsi',
-    estimatedHours: 3,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  },
-  {
-    _id: '3',
-    title: 'Optimize indexing on Task status field',
-    description: 'Create compound database indices to ensure fast queries for dashboards.',
-    status: 'DONE',
-    priority: 'MEDIUM',
-    component: 'DATABASE',
+    title: 'Setup Express API Pipelines',
+    description: 'Configure initial web service routers and server ports.',
+    status: 'IN_PROGRESS',
+    priority: 'CRITICAL',
+    component: 'BACKEND',
     assignee: 'Pravallika',
-    estimatedHours: 2,
+    dueDate: '2026-06-25',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   }
